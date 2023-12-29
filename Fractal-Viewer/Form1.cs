@@ -17,13 +17,24 @@ namespace Fractal_Viewer
             InitializeComponent();
 
             Bitmap pbxBitmapBuilder = new Bitmap(fractalPbx.Width, fractalPbx.Height);
+            int centreX = 0, centreY = 0;
+            double scale = 1;
 
             for (int y = 0; y < fractalPbx.Height; y++)
             {
                 for (int x = 0; x < fractalPbx.Width; x++)
                 {
-                    var rgbObject = HSVtoRGBConverter.HSVtoRGB(120, 0.75, 0.75);
+                    // start by finding what coords we are on the complex plane.
+                    double relativeX = x - fractalPbx.Width / 2;
+                    double relativeY = y - fractalPbx.Height / 2;
 
+                    relativeX *= scale;
+                    relativeY *= scale;
+
+                    relativeX -= centreX;
+                    relativeY -= centreY;
+
+                    var rgbObject = HSVtoRGBConverter.HSVtoRGB(120, 0.75, 0.75);
                     Color colourFromRgb = Color.FromArgb(rgbObject.Red, rgbObject.Green, rgbObject.Blue);
                     
                     pbxBitmapBuilder.SetPixel(x, y, colourFromRgb);
