@@ -34,9 +34,9 @@
             // 
             // fractalPbx
             // 
-            this.fractalPbx.Location = new System.Drawing.Point(12, 12);
+            this.fractalPbx.Location = new System.Drawing.Point(20, 20);
             this.fractalPbx.Name = "fractalPbx";
-            this.fractalPbx.Size = new System.Drawing.Size(301, 227);
+            this.fractalPbx.Size = new System.Drawing.Size(500, 500);
             this.fractalPbx.TabIndex = 0;
             this.fractalPbx.TabStop = false;
             // 
@@ -44,7 +44,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(544, 541);
             this.Controls.Add(this.fractalPbx);
             this.Name = "Form1";
             this.Text = "Fractal Viewer";

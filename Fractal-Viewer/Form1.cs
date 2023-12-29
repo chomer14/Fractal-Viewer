@@ -34,7 +34,14 @@ namespace Fractal_Viewer
                     relativeX -= centreX;
                     relativeY -= centreY;
 
-                    var rgbObject = HSVtoRGBConverter.HSVtoRGB(120, 0.75, 0.75);
+                    double magnitude = Math.Sqrt(Math.Pow(relativeX, 2) + Math.Pow(relativeY, 2));
+                    double theta = Math.Atan2(relativeX, relativeY);
+                    theta += 2 * Math.PI;
+                    theta %= 2 * Math.PI;
+
+                    double thetaDeg = theta / Math.PI * 180;
+
+                    var rgbObject = HSVtoRGBConverter.HSVtoRGB(thetaDeg, 0.75, 0.75);
                     Color colourFromRgb = Color.FromArgb(rgbObject.Red, rgbObject.Green, rgbObject.Blue);
                     
                     pbxBitmapBuilder.SetPixel(x, y, colourFromRgb);
