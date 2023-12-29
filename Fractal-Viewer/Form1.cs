@@ -16,19 +16,22 @@ namespace Fractal_Viewer
         {
             InitializeComponent();
 
-            Bitmap b = new Bitmap(fractalPbx.Width, fractalPbx.Height);
+            Bitmap pbxBitmapBuilder = new Bitmap(fractalPbx.Width, fractalPbx.Height);
 
-            Color c = Color.FromArgb(0, 255, 0);
+            var rgbObject = HSVtoRGBConverter.HSVtoRGB(120, 0.75, 0.75);
+
+            Color colourFromRgb = Color.FromArgb(rgbObject.Red, rgbObject.Green, rgbObject.Blue);
+
 
             for (int y = 0; y < fractalPbx.Height; y++)
             {
                 for (int x = 0; x < fractalPbx.Width; x++)
                 {
-                    b.SetPixel(x, y, c);
+                    pbxBitmapBuilder.SetPixel(x, y, colourFromRgb);
                 }
             }
 
-            fractalPbx.Image = b;
+            fractalPbx.Image = pbxBitmapBuilder;
         }
     }
 }
