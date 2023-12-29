@@ -28,22 +28,22 @@ namespace Fractal_Viewer
                     double relativeX = x - fractalPbx.Width / 2;
                     double relativeY = y - fractalPbx.Height / 2;
 
-                    relativeX *= scale;
-                    relativeY *= scale;
+                    relativeX /= scale;
+                    relativeY /= scale;
 
                     relativeX -= centreX;
-                    relativeY -= centreY;
+                    relativeY += centreY;
 
                     double magnitude = Math.Sqrt(Math.Pow(relativeX, 2) + Math.Pow(relativeY, 2));
                     double theta = Math.Atan2(relativeX, relativeY);
                     theta += 2 * Math.PI;
                     theta %= 2 * Math.PI;
-
                     double thetaDeg = theta / Math.PI * 180;
+
+                    // now we need to do the whole equation thing
 
                     var rgbObject = HSVtoRGBConverter.HSVtoRGB(thetaDeg, 0.75, 0.75);
                     Color colourFromRgb = Color.FromArgb(rgbObject.Red, rgbObject.Green, rgbObject.Blue);
-                    
                     pbxBitmapBuilder.SetPixel(x, y, colourFromRgb);
                 }
             }
