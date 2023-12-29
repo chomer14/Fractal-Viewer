@@ -15,6 +15,20 @@ namespace Fractal_Viewer
         public Form1()
         {
             InitializeComponent();
+
+            Bitmap b = new Bitmap(fractalPbx.Width, fractalPbx.Height);
+
+            Color c = Color.FromArgb(0, 255, 0);
+
+            for (int y = 0; y < fractalPbx.Height; y++)
+            {
+                for (int x = 0; x < fractalPbx.Width; x++)
+                {
+                    b.SetPixel(x, y, c);
+                }
+            }
+
+            fractalPbx.Image = b;
         }
     }
 }

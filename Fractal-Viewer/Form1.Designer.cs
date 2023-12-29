@@ -28,13 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.fractalPbx = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.fractalPbx)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // fractalPbx
+            // 
+            this.fractalPbx.Location = new System.Drawing.Point(12, 12);
+            this.fractalPbx.Name = "fractalPbx";
+            this.fractalPbx.Size = new System.Drawing.Size(301, 227);
+            this.fractalPbx.TabIndex = 0;
+            this.fractalPbx.TabStop = false;
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.Controls.Add(this.fractalPbx);
+            this.Name = "Form1";
+            this.Text = "Fractal Viewer";
+            ((System.ComponentModel.ISupportInitialize)(this.fractalPbx)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.PictureBox fractalPbx;
     }
 }
 
