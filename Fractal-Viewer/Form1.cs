@@ -18,15 +18,14 @@ namespace Fractal_Viewer
 
             Bitmap pbxBitmapBuilder = new Bitmap(fractalPbx.Width, fractalPbx.Height);
 
-            var rgbObject = HSVtoRGBConverter.HSVtoRGB(120, 0.75, 0.75);
-
-            Color colourFromRgb = Color.FromArgb(rgbObject.Red, rgbObject.Green, rgbObject.Blue);
-
-
             for (int y = 0; y < fractalPbx.Height; y++)
             {
                 for (int x = 0; x < fractalPbx.Width; x++)
                 {
+                    var rgbObject = HSVtoRGBConverter.HSVtoRGB(120, 0.75, 0.75);
+
+                    Color colourFromRgb = Color.FromArgb(rgbObject.Red, rgbObject.Green, rgbObject.Blue);
+                    
                     pbxBitmapBuilder.SetPixel(x, y, colourFromRgb);
                 }
             }
