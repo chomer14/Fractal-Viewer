@@ -9,21 +9,27 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Threading;
+using static System.Windows.Forms.AxHost;
 
 namespace Fractal_Viewer
 {
     public partial class Form1 : Form
     {
+        float centreX = -0.75f, centreY = 0;
+        float scale = 175;
+
+        int iterationMaximum = 200;
+        int magnitudeThresholdSquared = 2 * 2;
+
         public Form1()
         {
             InitializeComponent();
 
-            float centreX = -0.75f, centreY = 0;
-            float scale = 175;
+            this.MouseWheel += Form1_Scroll;
+        }
 
-            int iterationMaximum = 200;
-            int magnitudeThresholdSquared = 2*2;
-
+        public void loadFractal()
+        {
             Bitmap b = generateFractal(centreX, centreY, scale, iterationMaximum, magnitudeThresholdSquared);
             fractalPbx.Image = b;
         }
@@ -103,6 +109,11 @@ namespace Fractal_Viewer
                 colourList.Add(c);
             }
             return colourList;
+        }
+
+        private void Form1_Scroll(object sender, MouseEventArgs e)
+        {
+            int ratio = e.Delta / Math.Abs(e.Delta);
         }
     }
 }
