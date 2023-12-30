@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace Fractal_Viewer
 {
@@ -22,7 +23,21 @@ namespace Fractal_Viewer
             int iterationMaximum = 50;
             int magnitudeThresholdSquared = 2*2;
 
-            fractalPbx.Image = generateFractal(centreX, centreY, scale, iterationMaximum, magnitudeThresholdSquared);
+            Bitmap b = new Bitmap(1,1);
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            for (int i = 0; i < 100; i++)
+            {
+                b = generateFractal(centreX, centreY, scale, iterationMaximum, magnitudeThresholdSquared);
+            }
+
+            stopwatch.Stop();
+            TimeSpan elapsedTime = stopwatch.Elapsed;
+
+            MessageBox.Show($"{Math.Round((double)elapsedTime.TotalSeconds, 3)} Seconds");
+
+            fractalPbx.Image = b;
         }
 
         public Bitmap generateFractal(float centreX, float centreY, float scale,float iterationMaximum, float magnitudeThresholdSquared)
