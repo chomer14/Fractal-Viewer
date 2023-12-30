@@ -14,8 +14,6 @@ namespace Fractal_Viewer
 {
     public partial class Form1 : Form
     {
-        public Bitmap pbxBitmapBuilder;
-
         public Form1()
         {
             InitializeComponent();
@@ -45,16 +43,30 @@ namespace Fractal_Viewer
 
         public Bitmap generateFractal(float centreX, float centreY, float scale,float iterationMaximum, float magnitudeThresholdSquared)
         {
-            pbxBitmapBuilder = new Bitmap(fractalPbx.Width, fractalPbx.Height);
+            List<List<Color>> colourRows = new List<List<Color>>();
+
             for (int y = 0; y < fractalPbx.Height; y++)
             {
-                generateFractalRow(centreX, centreY, scale, iterationMaximum, magnitudeThresholdSquared, y);
+                colourRows.Add(generateFractalRow(centreX, centreY, scale, iterationMaximum, magnitudeThresholdSquared, y));
             }
+
+            Bitmap pbxBitmapBuilder = new Bitmap(fractalPbx.Width, fractalPbx.Height);
+
+            for (int i = 0; i < colourRows.Count; i++)
+            {
+                for (int j = 0; j < colourRows.Count; j++)
+                {
+                    pbxBitmapBuilder.SetPixel(j, i, colourRows[i][j]);
+                }
+            }
+
             return pbxBitmapBuilder;
         }
 
-        public void generateFractalRow(float centreX, float centreY, float scale, float iterationMaximum, float magnitudeThresholdSquared, int y)
+        public List<Color> generateFractalRow(float centreX, float centreY, float scale, float iterationMaximum, float magnitudeThresholdSquared, int y)
         {
+            List<Color> colourList = new List<Color>();
+
             for (int x = 0; x < fractalPbx.Width; x++)
             {
                 // start by finding what coords we are on the complex plane.
@@ -101,8 +113,9 @@ namespace Fractal_Viewer
                     c = Color.Black;
                 }
 
-                pbxBitmapBuilder.SetPixel(x, y, c);
+                colourList.Add(c);
             }
+            return colourList;
         }
     }
 }
