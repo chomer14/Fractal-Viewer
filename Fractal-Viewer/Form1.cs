@@ -16,13 +16,18 @@ namespace Fractal_Viewer
         {
             InitializeComponent();
 
-            Bitmap pbxBitmapBuilder = new Bitmap(fractalPbx.Width, fractalPbx.Height);
             float centreX = -0.75f, centreY = 0;
             float scale = 175;
 
             int iterationMaximum = 50;
             int magnitudeThresholdSquared = 2*2;
 
+            fractalPbx.Image = generateFractal(centreX, centreY, scale, iterationMaximum, magnitudeThresholdSquared);
+        }
+
+        public Bitmap generateFractal(float centreX, float centreY, float scale,float iterationMaximum, float magnitudeThresholdSquared)
+        {
+            Bitmap pbxBitmapBuilder = new Bitmap(fractalPbx.Width, fractalPbx.Height);
             for (int y = 0; y < fractalPbx.Height; y++)
             {
                 for (int x = 0; x < fractalPbx.Width; x++)
@@ -51,7 +56,7 @@ namespace Fractal_Viewer
                     for (int iterationCount = 0; iterationCount < iterationMaximum; iterationCount++)
                     {
                         // sqrt(a^2 + b^2) > r == a^2 + b^2 > r^2
-                        if ( (zRe*zRe + zIm*zIm) > magnitudeThresholdSquared )
+                        if ((zRe * zRe + zIm * zIm) > magnitudeThresholdSquared)
                         {
                             var rgbObject = HSVtoRGBConverter.HSVtoRGB((float)iterationCount / (float)iterationMaximum * 360f, 1, 1);
                             c = Color.FromArgb(rgbObject.Red, rgbObject.Green, rgbObject.Blue);
@@ -74,8 +79,7 @@ namespace Fractal_Viewer
                     pbxBitmapBuilder.SetPixel(x, y, c);
                 }
             }
-
-            fractalPbx.Image = pbxBitmapBuilder;
+            return pbxBitmapBuilder;
         }
     }
 }
