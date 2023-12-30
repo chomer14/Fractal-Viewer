@@ -1,15 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics;
-using System.Threading;
-using static System.Windows.Forms.AxHost;
 
 namespace Fractal_Viewer
 {
@@ -23,24 +15,25 @@ namespace Fractal_Viewer
 
         public Form1()
         {
+            this.MouseWheel += Form1_Scroll;
             InitializeComponent();
 
-            this.MouseWheel += Form1_Scroll;
+            loadFractal();
         }
 
         public void loadFractal()
         {
-            Bitmap b = generateFractal(centreX, centreY, scale, iterationMaximum, magnitudeThresholdSquared);
+            Bitmap b = generateFractal();
             fractalPbx.Image = b;
         }
 
-        public Bitmap generateFractal(float centreX, float centreY, float scale,float iterationMaximum, float magnitudeThresholdSquared)
+        public Bitmap generateFractal()
         {
             List<List<Color>> colourRows = new List<List<Color>>();
 
             for (int y = 0; y < fractalPbx.Height; y++)
             {
-                colourRows.Add(generateFractalRow(centreX, centreY, scale, iterationMaximum, magnitudeThresholdSquared, y));
+                colourRows.Add(generateFractalRow(y));
             }
 
             Bitmap pbxBitmapBuilder = new Bitmap(fractalPbx.Width, fractalPbx.Height);
@@ -56,7 +49,7 @@ namespace Fractal_Viewer
             return pbxBitmapBuilder;
         }
 
-        public List<Color> generateFractalRow(float centreX, float centreY, float scale, float iterationMaximum, float magnitudeThresholdSquared, int y)
+        public List<Color> generateFractalRow(int y)
         {
             List<Color> colourList = new List<Color>();
 
@@ -113,7 +106,31 @@ namespace Fractal_Viewer
 
         private void Form1_Scroll(object sender, MouseEventArgs e)
         {
-            int ratio = e.Delta / Math.Abs(e.Delta);
+            float ratio = e.Delta / Math.Abs(e.Delta);
+            ratio /= 15;
+            ratio += 1;
+            scale *= ratio;
+
+            loadFractal();
+
+            (float a, float b) newCentre = pixelToComplex(e.X, e.Y);
+            centreX = newCentre.a;
+            centreY = newCentre.b;
+        }
+
+        public (float, float) pixelToComplex(float x, float y)
+        {
+            float relativeX = x - fractalPbx.Width / 2;
+            float relativeY = y - fractalPbx.Height / 2;
+
+            relativeX /= scale;
+            relativeY /= scale;
+
+            relativeX += centreX;
+            relativeY += centreY;
+            relativeY *= -1;
+
+            return (relativeX, relativeY);
         }
     }
 }
