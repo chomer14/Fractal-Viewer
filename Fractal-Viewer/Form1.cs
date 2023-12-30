@@ -21,23 +21,10 @@ namespace Fractal_Viewer
             float centreX = -0.75f, centreY = 0;
             float scale = 175;
 
-            int iterationMaximum = 50;
+            int iterationMaximum = 200;
             int magnitudeThresholdSquared = 2*2;
 
-            Bitmap b = new Bitmap(1,1);
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-
-            for (int i = 0; i < 100; i++)
-            {
-                b = generateFractal(centreX, centreY, scale, iterationMaximum, magnitudeThresholdSquared);
-            }
-
-            stopwatch.Stop();
-            TimeSpan elapsedTime = stopwatch.Elapsed;
-
-            MessageBox.Show($"{Math.Round((double)elapsedTime.TotalSeconds, 3)} Seconds");
-
+            Bitmap b = generateFractal(centreX, centreY, scale, iterationMaximum, magnitudeThresholdSquared);
             fractalPbx.Image = b;
         }
 
