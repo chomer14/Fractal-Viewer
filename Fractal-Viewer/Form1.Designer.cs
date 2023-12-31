@@ -67,7 +67,7 @@
             this.resetToOriginBtn.Name = "resetToOriginBtn";
             this.resetToOriginBtn.Size = new System.Drawing.Size(120, 23);
             this.resetToOriginBtn.TabIndex = 1;
-            this.resetToOriginBtn.Text = "Reset to (0 + 0i)";
+            this.resetToOriginBtn.Text = "Reset to (0) + (0)i";
             this.resetToOriginBtn.UseVisualStyleBackColor = true;
             this.resetToOriginBtn.Click += new System.EventHandler(this.resetToOriginBtn_Click);
             // 
@@ -134,7 +134,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 348);
+            this.label5.Location = new System.Drawing.Point(5, 362);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(64, 13);
             this.label5.TabIndex = 17;
@@ -143,7 +143,7 @@
             // colourShiftSldr
             // 
             this.colourShiftSldr.LargeChange = 3;
-            this.colourShiftSldr.Location = new System.Drawing.Point(3, 364);
+            this.colourShiftSldr.Location = new System.Drawing.Point(5, 378);
             this.colourShiftSldr.Maximum = 12;
             this.colourShiftSldr.Name = "colourShiftSldr";
             this.colourShiftSldr.Size = new System.Drawing.Size(104, 45);
@@ -153,7 +153,7 @@
             // magThresholdLbl
             // 
             this.magThresholdLbl.AutoSize = true;
-            this.magThresholdLbl.Location = new System.Drawing.Point(3, 275);
+            this.magThresholdLbl.Location = new System.Drawing.Point(5, 273);
             this.magThresholdLbl.Name = "magThresholdLbl";
             this.magThresholdLbl.Size = new System.Drawing.Size(13, 13);
             this.magThresholdLbl.TabIndex = 15;
@@ -162,7 +162,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 259);
+            this.label6.Location = new System.Drawing.Point(5, 225);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(110, 13);
             this.label6.TabIndex = 14;
@@ -171,7 +171,7 @@
             // magThresholdSldr
             // 
             this.magThresholdSldr.LargeChange = 2;
-            this.magThresholdSldr.Location = new System.Drawing.Point(3, 227);
+            this.magThresholdSldr.Location = new System.Drawing.Point(5, 241);
             this.magThresholdSldr.Name = "magThresholdSldr";
             this.magThresholdSldr.Size = new System.Drawing.Size(104, 45);
             this.magThresholdSldr.TabIndex = 13;
@@ -181,7 +181,7 @@
             // maxItersLbl
             // 
             this.maxItersLbl.AutoSize = true;
-            this.maxItersLbl.Location = new System.Drawing.Point(3, 194);
+            this.maxItersLbl.Location = new System.Drawing.Point(5, 192);
             this.maxItersLbl.Name = "maxItersLbl";
             this.maxItersLbl.Size = new System.Drawing.Size(25, 13);
             this.maxItersLbl.TabIndex = 12;
@@ -190,7 +190,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 178);
+            this.label4.Location = new System.Drawing.Point(5, 144);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(100, 13);
             this.label4.TabIndex = 11;
@@ -198,7 +198,7 @@
             // 
             // maxIterSldr
             // 
-            this.maxIterSldr.Location = new System.Drawing.Point(3, 146);
+            this.maxIterSldr.Location = new System.Drawing.Point(5, 160);
             this.maxIterSldr.Maximum = 500;
             this.maxIterSldr.Minimum = 1;
             this.maxIterSldr.Name = "maxIterSldr";
@@ -220,7 +220,7 @@
             // renderTimeLbl
             // 
             this.renderTimeLbl.AutoSize = true;
-            this.renderTimeLbl.Location = new System.Drawing.Point(3, 323);
+            this.renderTimeLbl.Location = new System.Drawing.Point(5, 337);
             this.renderTimeLbl.Name = "renderTimeLbl";
             this.renderTimeLbl.Size = new System.Drawing.Size(38, 13);
             this.renderTimeLbl.TabIndex = 7;
@@ -229,7 +229,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 310);
+            this.label3.Location = new System.Drawing.Point(5, 324);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 13);
             this.label3.TabIndex = 6;
