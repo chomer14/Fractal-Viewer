@@ -77,5 +77,46 @@ namespace Fractal_Viewer
 
             return (relativeX, relativeY);
         }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            int size;
+            float relativeSize;
+            bool changed = true;
+            switch (keyData)
+            {
+                case Keys.W:
+                    size = fractalPbx.Height;
+                    relativeSize = (float)size / scale;
+                    centreY -= relativeSize / 4;
+                    break;
+                case Keys.A:
+                    size = fractalPbx.Width;
+                    relativeSize = (float)size / scale;
+                    centreX -= relativeSize / 4;
+                    break;
+                case Keys.S:
+                    size = fractalPbx.Height;
+                    relativeSize = (float)size / scale;
+                    centreY += relativeSize / 4;
+                    break;
+                case Keys.D:
+                    size = fractalPbx.Width;
+                    relativeSize = (float)size / scale;
+                    centreX += relativeSize / 4;
+                    break;
+
+                default:
+                    changed = false;
+                    break;
+            }
+
+            if (changed)
+            {
+                loadFractal();
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
     }
 }

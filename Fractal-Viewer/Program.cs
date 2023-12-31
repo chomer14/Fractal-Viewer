@@ -16,7 +16,7 @@ namespace Fractal_Viewer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new visualisationForm());
+            Application.Run(new Form1());
         }
     }
 }
