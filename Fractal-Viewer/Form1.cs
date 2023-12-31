@@ -11,8 +11,13 @@ namespace Fractal_Viewer
         float centreX = 0f, centreY = 0;
         float scale = 175;
 
-        int iterationMaximum = 200;
+        int iterationMaximum = 100;
         int magnitudeThresholdSquared = 2 * 2;
+
+        float colourShift = 0;
+
+        double saturation = 1;
+        double brightness = 1;
 
         public Form1()
         {
@@ -97,7 +102,7 @@ namespace Fractal_Viewer
                     // sqrt(a^2 + b^2) > r == a^2 + b^2 > r^2
                     if ((zRe * zRe + zIm * zIm) > magnitudeThresholdSquared)
                     {
-                        var rgbObject = HSVtoRGBConverter.HSVtoRGB((float)iterationCount / (float)iterationMaximum * 360f, 1, 1);
+                        var rgbObject = HSVtoRGBConverter.HSVtoRGB(((float)iterationCount / (float)iterationMaximum * 360f + colourShift) % 360f, saturation, brightness);
                         c = Color.FromArgb(rgbObject.Red, rgbObject.Green, rgbObject.Blue);
                         b = false;
                         break;
@@ -164,6 +169,12 @@ namespace Fractal_Viewer
         private void magThresholdSldr_ValueChanged(object sender, EventArgs e)
         {
             magnitudeThresholdSquared = magThresholdSldr.Value * magThresholdSldr.Value;
+            loadFractal();
+        }
+
+        private void colourShiftSldr_ValueChanged(object sender, EventArgs e)
+        {
+            colourShift = colourShiftSldr.Value * 30;
             loadFractal();
         }
 

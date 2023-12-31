@@ -44,10 +44,13 @@
             this.magThresholdLbl = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.magThresholdSldr = new System.Windows.Forms.TrackBar();
+            this.colourShiftSldr = new System.Windows.Forms.TrackBar();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.fractalPbx)).BeginInit();
             this.commandPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maxIterSldr)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.magThresholdSldr)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colourShiftSldr)).BeginInit();
             this.SuspendLayout();
             // 
             // fractalPbx
@@ -107,6 +110,8 @@
             // commandPnl
             // 
             this.commandPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.commandPnl.Controls.Add(this.label5);
+            this.commandPnl.Controls.Add(this.colourShiftSldr);
             this.commandPnl.Controls.Add(this.magThresholdLbl);
             this.commandPnl.Controls.Add(this.label6);
             this.commandPnl.Controls.Add(this.magThresholdSldr);
@@ -211,6 +216,25 @@
             this.magThresholdSldr.Value = 2;
             this.magThresholdSldr.ValueChanged += new System.EventHandler(this.magThresholdSldr_ValueChanged);
             // 
+            // colourShiftSldr
+            // 
+            this.colourShiftSldr.LargeChange = 3;
+            this.colourShiftSldr.Location = new System.Drawing.Point(3, 364);
+            this.colourShiftSldr.Maximum = 12;
+            this.colourShiftSldr.Name = "colourShiftSldr";
+            this.colourShiftSldr.Size = new System.Drawing.Size(104, 45);
+            this.colourShiftSldr.TabIndex = 16;
+            this.colourShiftSldr.ValueChanged += new System.EventHandler(this.colourShiftSldr_ValueChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 348);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(64, 13);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "Colour Shift:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -226,6 +250,7 @@
             this.commandPnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maxIterSldr)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.magThresholdSldr)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colourShiftSldr)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -248,6 +273,8 @@
         private System.Windows.Forms.Label magThresholdLbl;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TrackBar magThresholdSldr;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TrackBar colourShiftSldr;
     }
 }
 
