@@ -1,14 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-<<<<<<< Updated upstream
-=======
 using System.Windows.Forms;
-using static System.Windows.Forms.AxHost;
->>>>>>> Stashed changes
 
 namespace Fractal_Viewer
 {
