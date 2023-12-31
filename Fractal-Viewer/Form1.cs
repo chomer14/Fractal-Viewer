@@ -18,6 +18,7 @@ namespace Fractal_Viewer
 
         public Form1()
         {
+            // necessary for scroll event to work regardless of focus
             this.MouseWheel += Form1_Scroll;
             InitializeComponent();
 
@@ -26,22 +27,30 @@ namespace Fractal_Viewer
 
         public void loadFractal()
         {
+            // Update labels showing focus and scale
             centralFocusLbl.Text = $"({Math.Round(centreX, 3)}) + ({Math.Round(centreY, 3)})i";
             scaleLbl.Text = $"{scale.ToString("E3")}";
 
+            // time to generate
             Stopwatch s = new Stopwatch();
             s.Start();
+
+            // generate fractal
             Bitmap b = fractalGenerator.generateFractal(fractalPbx, scale, centreX, centreY, iterationMaximum, magnitudeThresholdSquared, colourShift);
+            
+            // display generation duration
             s.Stop();
             renderTimeLbl.Text = $"{s.ElapsedMilliseconds}ms";
 
+            // update other values
             maxIterSldr.Value = iterationMaximum;
             maxItersLbl.Text = $"{iterationMaximum}";
-
             magThresholdLbl.Text = $"{magThresholdSldr.Value}";
 
+            // make command panel same height as picturebox
             commandPnl.Height = b.Height;
 
+            // update picturebox
             fractalPbx.Image = b;
         }
     }

@@ -10,13 +10,20 @@ namespace Fractal_Viewer
 {
     public partial class Form1 : Form
     {
-
         private void Form1_Scroll(object sender, MouseEventArgs e)
         {
+            // make sure mouse is within bounds of picturebox
+            if (e.X < fractalPbx.Location.X || e.X > fractalPbx.Location.X + fractalPbx.Width)
+                return;
+            if (e.Y < fractalPbx.Location.Y || e.Y > fractalPbx.Location.Y + fractalPbx.Height)
+                return;
+
+            // calculate the complex number represented by the pixel the mouse is over, and centre the zoom there
             (float a, float b) newCentre = pixelToComplex(e.X - fractalPbx.Location.X, e.Y - fractalPbx.Location.Y);
             centreX = newCentre.a;
             centreY = newCentre.b;
 
+            // make scale ratio either 0.5 or 2, doubling zoom or halfing it
             float ratio = e.Delta / Math.Abs(e.Delta);
             ratio += 1;
             ratio /= 2;
@@ -29,6 +36,7 @@ namespace Fractal_Viewer
 
         private void Form1_ResizeEnd(object sender, EventArgs e)
         {
+            // scale picturebox to almost fill form
             fractalPbx.Size = new Size(this.Width - 210, this.Height - 80);
             loadFractal();
         }
@@ -60,18 +68,22 @@ namespace Fractal_Viewer
 
         private void colourShiftSldr_ValueChanged(object sender, EventArgs e)
         {
+            // scale from [0, 12] to [0, 360]
             colourShift = colourShiftSldr.Value * 30;
             loadFractal();
         }
 
         public (float, float) pixelToComplex(float x, float y)
         {
+            // move origin to centre
             float relativeX = x - fractalPbx.Width / 2;
             float relativeY = y - fractalPbx.Height / 2;
 
+            // scale
             relativeX /= scale;
             relativeY /= scale;
 
+            // account for focus
             relativeX += centreX;
             relativeY += centreY;
 
@@ -83,6 +95,8 @@ namespace Fractal_Viewer
             int size;
             float relativeSize;
             bool changed = true;
+
+            // dependant on key, move the centre. If centre moved, reload fractal
             switch (keyData)
             {
                 case Keys.W:
@@ -116,6 +130,7 @@ namespace Fractal_Viewer
                 loadFractal();
             }
 
+            // base behavior
             return base.ProcessCmdKey(ref msg, keyData);
         }
     }
