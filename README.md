@@ -1,4 +1,4 @@
-# Mandelbrot Fractal View
+# Fractal Visualiser
 
 ## Controls
 
