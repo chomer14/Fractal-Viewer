@@ -4,13 +4,18 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+<<<<<<< Updated upstream
+=======
+using System.Windows.Forms;
+using static System.Windows.Forms.AxHost;
+>>>>>>> Stashed changes
 
 namespace Fractal_Viewer
 {
     public static class fractalGenerator
     {
 
-        static public Bitmap generateFractal(Bitmap fractalPbx, float scale, float centreX, float centreY, int iterationMaximum, int magnitudeThresholdSquared, float colourShift)
+        static public Bitmap generateFractal(PictureBox fractalPbx, float scale, float centreX, float centreY, int iterationMaximum, int magnitudeThresholdSquared, float colourShift)
         {
             List<List<Color>> colourRows = new List<List<Color>>();
 
@@ -32,7 +37,7 @@ namespace Fractal_Viewer
             return pbxBitmapBuilder;
         }
 
-        static public List<Color> generateFractalRow(int y, Bitmap fractalPbx, float scale, float centreX, float centreY, int iterationMaximum, int magnitudeThresholdSquared, float colourShift)
+        static public List<Color> generateFractalRow(int y, PictureBox fractalPbx, float scale, float centreX, float centreY, int iterationMaximum, int magnitudeThresholdSquared, float colourShift)
         {
             List<Color> colourList = new List<Color>();
 
@@ -64,7 +69,7 @@ namespace Fractal_Viewer
                     // sqrt(a^2 + b^2) > r == a^2 + b^2 > r^2
                     if ((zRe * zRe + zIm * zIm) > magnitudeThresholdSquared)
                     {
-                        var rgbObject = HSVtoRGBConverter.HSVtoRGB(((float)iterationCount / (float)iterationMaximum * 360f + colourShift) % 360f, saturation, brightness);
+                        var rgbObject = HSVtoRGBConverter.HSVtoRGB(((float)iterationCount / (float)iterationMaximum * 360f + colourShift) % 360f, 1, 1);
                         c = Color.FromArgb(rgbObject.Red, rgbObject.Green, rgbObject.Blue);
                         b = false;
                         break;

@@ -31,7 +31,7 @@ namespace Fractal_Viewer
 
             Stopwatch s = new Stopwatch();
             s.Start();
-            Bitmap b = generateFractal();
+            Bitmap b = fractalGenerator.generateFractal(fractalPbx, scale, centreX, centreY, iterationMaximum, magnitudeThresholdSquared, colourShift);
             s.Stop();
             renderTimeLbl.Text = $"{s.ElapsedMilliseconds}ms";
 
