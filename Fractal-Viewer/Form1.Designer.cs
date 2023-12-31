@@ -35,34 +35,34 @@
             this.label1 = new System.Windows.Forms.Label();
             this.scaleLbl = new System.Windows.Forms.Label();
             this.commandPnl = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.colourShiftSldr = new System.Windows.Forms.TrackBar();
-            this.magThresholdLbl = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.magThresholdSldr = new System.Windows.Forms.TrackBar();
-            this.maxItersLbl = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.maxIterSldr = new System.Windows.Forms.TrackBar();
-            this.resetScaleLbl = new System.Windows.Forms.Button();
-            this.renderTimeLbl = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.magThresholdLbl = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.colourShiftSldr = new System.Windows.Forms.TrackBar();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.resetScaleLbl = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.renderTimeLbl = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.maxIterSldr = new System.Windows.Forms.TrackBar();
+            this.label4 = new System.Windows.Forms.Label();
+            this.maxItersLbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.fractalPbx)).BeginInit();
             this.commandPnl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.colourShiftSldr)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.magThresholdSldr)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.maxIterSldr)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.magThresholdSldr)).BeginInit();
+            this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.colourShiftSldr)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.maxIterSldr)).BeginInit();
             this.SuspendLayout();
             // 
             // fractalPbx
@@ -133,33 +133,15 @@
             this.commandPnl.Size = new System.Drawing.Size(130, 500);
             this.commandPnl.TabIndex = 6;
             // 
-            // label5
+            // panel5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 13);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "Colour Shift:";
-            // 
-            // colourShiftSldr
-            // 
-            this.colourShiftSldr.LargeChange = 3;
-            this.colourShiftSldr.Location = new System.Drawing.Point(3, 16);
-            this.colourShiftSldr.Maximum = 12;
-            this.colourShiftSldr.Name = "colourShiftSldr";
-            this.colourShiftSldr.Size = new System.Drawing.Size(104, 45);
-            this.colourShiftSldr.TabIndex = 16;
-            this.colourShiftSldr.ValueChanged += new System.EventHandler(this.colourShiftSldr_ValueChanged);
-            // 
-            // magThresholdLbl
-            // 
-            this.magThresholdLbl.AutoSize = true;
-            this.magThresholdLbl.Location = new System.Drawing.Point(3, 64);
-            this.magThresholdLbl.Name = "magThresholdLbl";
-            this.magThresholdLbl.Size = new System.Drawing.Size(13, 13);
-            this.magThresholdLbl.TabIndex = 15;
-            this.magThresholdLbl.Text = "2";
+            this.panel5.Controls.Add(this.label6);
+            this.panel5.Controls.Add(this.magThresholdSldr);
+            this.panel5.Controls.Add(this.magThresholdLbl);
+            this.panel5.Location = new System.Drawing.Point(4, 217);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(122, 82);
+            this.panel5.TabIndex = 21;
             // 
             // label6
             // 
@@ -180,23 +162,109 @@
             this.magThresholdSldr.Value = 2;
             this.magThresholdSldr.ValueChanged += new System.EventHandler(this.magThresholdSldr_ValueChanged);
             // 
-            // maxItersLbl
+            // magThresholdLbl
             // 
-            this.maxItersLbl.AutoSize = true;
-            this.maxItersLbl.Location = new System.Drawing.Point(3, 64);
-            this.maxItersLbl.Name = "maxItersLbl";
-            this.maxItersLbl.Size = new System.Drawing.Size(25, 13);
-            this.maxItersLbl.TabIndex = 12;
-            this.maxItersLbl.Text = "200";
+            this.magThresholdLbl.AutoSize = true;
+            this.magThresholdLbl.Location = new System.Drawing.Point(3, 64);
+            this.magThresholdLbl.Name = "magThresholdLbl";
+            this.magThresholdLbl.Size = new System.Drawing.Size(13, 13);
+            this.magThresholdLbl.TabIndex = 15;
+            this.magThresholdLbl.Text = "2";
             // 
-            // label4
+            // panel1
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(0, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 13);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Maximum Iterations:";
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.resetToOriginBtn);
+            this.panel1.Controls.Add(this.centralFocusLbl);
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(122, 52);
+            this.panel1.TabIndex = 18;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.label5);
+            this.panel6.Controls.Add(this.colourShiftSldr);
+            this.panel6.Location = new System.Drawing.Point(3, 435);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(122, 58);
+            this.panel6.TabIndex = 21;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(64, 13);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "Colour Shift:";
+            // 
+            // colourShiftSldr
+            // 
+            this.colourShiftSldr.LargeChange = 3;
+            this.colourShiftSldr.Location = new System.Drawing.Point(3, 16);
+            this.colourShiftSldr.Maximum = 12;
+            this.colourShiftSldr.Name = "colourShiftSldr";
+            this.colourShiftSldr.Size = new System.Drawing.Size(104, 45);
+            this.colourShiftSldr.TabIndex = 16;
+            this.colourShiftSldr.ValueChanged += new System.EventHandler(this.colourShiftSldr_ValueChanged);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.resetScaleLbl);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.scaleLbl);
+            this.panel2.Location = new System.Drawing.Point(4, 82);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(122, 52);
+            this.panel2.TabIndex = 19;
+            // 
+            // resetScaleLbl
+            // 
+            this.resetScaleLbl.Location = new System.Drawing.Point(0, 29);
+            this.resetScaleLbl.Name = "resetScaleLbl";
+            this.resetScaleLbl.Size = new System.Drawing.Size(120, 23);
+            this.resetScaleLbl.TabIndex = 8;
+            this.resetScaleLbl.Text = "Reset Scale";
+            this.resetScaleLbl.UseVisualStyleBackColor = true;
+            this.resetScaleLbl.Click += new System.EventHandler(this.resetScaleLbl_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.renderTimeLbl);
+            this.panel3.Location = new System.Drawing.Point(3, 161);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(122, 29);
+            this.panel3.TabIndex = 20;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Render time:";
+            // 
+            // renderTimeLbl
+            // 
+            this.renderTimeLbl.AutoSize = true;
+            this.renderTimeLbl.Location = new System.Drawing.Point(3, 13);
+            this.renderTimeLbl.Name = "renderTimeLbl";
+            this.renderTimeLbl.Size = new System.Drawing.Size(38, 13);
+            this.renderTimeLbl.TabIndex = 7;
+            this.renderTimeLbl.Text = "372ms";
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.maxIterSldr);
+            this.panel4.Controls.Add(this.label4);
+            this.panel4.Controls.Add(this.maxItersLbl);
+            this.panel4.Location = new System.Drawing.Point(3, 326);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(122, 82);
+            this.panel4.TabIndex = 20;
             // 
             // maxIterSldr
             // 
@@ -209,97 +277,29 @@
             this.maxIterSldr.Value = 200;
             this.maxIterSldr.ValueChanged += new System.EventHandler(this.maxIterSldr_ValueChanged);
             // 
-            // resetScaleLbl
+            // label4
             // 
-            this.resetScaleLbl.Location = new System.Drawing.Point(0, 29);
-            this.resetScaleLbl.Name = "resetScaleLbl";
-            this.resetScaleLbl.Size = new System.Drawing.Size(120, 23);
-            this.resetScaleLbl.TabIndex = 8;
-            this.resetScaleLbl.Text = "Reset Scale";
-            this.resetScaleLbl.UseVisualStyleBackColor = true;
-            this.resetScaleLbl.Click += new System.EventHandler(this.resetScaleLbl_Click);
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(0, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(100, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Maximum Iterations:";
             // 
-            // renderTimeLbl
+            // maxItersLbl
             // 
-            this.renderTimeLbl.AutoSize = true;
-            this.renderTimeLbl.Location = new System.Drawing.Point(3, 13);
-            this.renderTimeLbl.Name = "renderTimeLbl";
-            this.renderTimeLbl.Size = new System.Drawing.Size(38, 13);
-            this.renderTimeLbl.TabIndex = 7;
-            this.renderTimeLbl.Text = "372ms";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Render time:";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.resetToOriginBtn);
-            this.panel1.Controls.Add(this.centralFocusLbl);
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(122, 52);
-            this.panel1.TabIndex = 18;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.resetScaleLbl);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.scaleLbl);
-            this.panel2.Location = new System.Drawing.Point(3, 73);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(122, 52);
-            this.panel2.TabIndex = 19;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.maxIterSldr);
-            this.panel4.Controls.Add(this.label4);
-            this.panel4.Controls.Add(this.maxItersLbl);
-            this.panel4.Location = new System.Drawing.Point(2, 313);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(122, 82);
-            this.panel4.TabIndex = 20;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.renderTimeLbl);
-            this.panel3.Location = new System.Drawing.Point(2, 143);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(122, 52);
-            this.panel3.TabIndex = 20;
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.label6);
-            this.panel5.Controls.Add(this.magThresholdSldr);
-            this.panel5.Controls.Add(this.magThresholdLbl);
-            this.panel5.Location = new System.Drawing.Point(3, 213);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(122, 82);
-            this.panel5.TabIndex = 21;
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.label5);
-            this.panel6.Controls.Add(this.colourShiftSldr);
-            this.panel6.Location = new System.Drawing.Point(2, 413);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(122, 82);
-            this.panel6.TabIndex = 21;
+            this.maxItersLbl.AutoSize = true;
+            this.maxItersLbl.Location = new System.Drawing.Point(3, 64);
+            this.maxItersLbl.Name = "maxItersLbl";
+            this.maxItersLbl.Size = new System.Drawing.Size(25, 13);
+            this.maxItersLbl.TabIndex = 12;
+            this.maxItersLbl.Text = "200";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 541);
+            this.ClientSize = new System.Drawing.Size(694, 541);
             this.Controls.Add(this.commandPnl);
             this.Controls.Add(this.fractalPbx);
             this.Name = "Form1";
@@ -307,21 +307,21 @@
             this.ResizeEnd += new System.EventHandler(this.Form1_ResizeEnd);
             ((System.ComponentModel.ISupportInitialize)(this.fractalPbx)).EndInit();
             this.commandPnl.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.colourShiftSldr)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.magThresholdSldr)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.maxIterSldr)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.magThresholdSldr)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.colourShiftSldr)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.maxIterSldr)).EndInit();
             this.ResumeLayout(false);
 
         }
