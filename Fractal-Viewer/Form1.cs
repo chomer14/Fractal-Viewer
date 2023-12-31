@@ -7,7 +7,7 @@ namespace Fractal_Viewer
 {
     public partial class Form1 : Form
     {
-        float centreX = -0.75f, centreY = 0;
+        float centreX = 0f, centreY = 0;
         float scale = 175;
 
         int iterationMaximum = 200;
@@ -106,16 +106,18 @@ namespace Fractal_Viewer
 
         private void Form1_Scroll(object sender, MouseEventArgs e)
         {
+            (float a, float b) newCentre = pixelToComplex(e.X - fractalPbx.Location.X, e.Y - fractalPbx.Location.Y);
+            centreX = newCentre.a;
+            centreY = newCentre.b;
+
             float ratio = e.Delta / Math.Abs(e.Delta);
-            ratio /= 15;
             ratio += 1;
+            ratio /= 2;
+            ratio *= 1.5f;
+            ratio += 0.5f;
             scale *= ratio;
 
             loadFractal();
-
-            (float a, float b) newCentre = pixelToComplex(e.X, e.Y);
-            centreX = newCentre.a;
-            centreY = newCentre.b;
         }
 
         public (float, float) pixelToComplex(float x, float y)
@@ -128,7 +130,6 @@ namespace Fractal_Viewer
 
             relativeX += centreX;
             relativeY += centreY;
-            relativeY *= -1;
 
             return (relativeX, relativeY);
         }
