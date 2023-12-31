@@ -14,3 +14,13 @@
   - The amount of time (in milliseconds) that it takes for your computer to render the current frame.
 5. Colour Shift:
   - This is purely cosmetic, and merely changes the pretty colours of the visualisation.
+
+## About
+
+This program allows for visualising fractals, including the mandelbrot set. To read up about fractals and specifically the mandelbrot set, I recommend reading [the wikipedia page](https://en.wikipedia.org/wiki/Mandelbrot_set).
+
+## Limitations
+1. Limited resolution
+  - Due to the limited precision of floating-point types in C#, at high zoom levels, the visualisation stops working.
+2. Currently only works for the mandlebrot set
+  - I'm working on this feature, to allow you to input your own equations to explore.
