@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace Fractal_Viewer
 {
@@ -23,7 +24,22 @@ namespace Fractal_Viewer
 
         public void loadFractal()
         {
+            centralFocusLbl.Text = $"({Math.Round(centreX, 3)}) + ({Math.Round(centreY, 3)})i";
+            scaleLbl.Text = $"{scale.ToString("E3")}";
+
+            Stopwatch s = new Stopwatch();
+            s.Start();
             Bitmap b = generateFractal();
+            s.Stop();
+            renderTimeLbl.Text = $"{s.ElapsedMilliseconds}ms";
+
+            maxIterSldr.Value = iterationMaximum;
+            maxItersLbl.Text = $"{iterationMaximum}";
+
+            magThresholdLbl.Text = $"{magThresholdSldr.Value}";
+
+            commandPnl.Height = b.Height;
+
             fractalPbx.Image = b;
         }
 
@@ -40,7 +56,7 @@ namespace Fractal_Viewer
 
             for (int i = 0; i < colourRows.Count; i++)
             {
-                for (int j = 0; j < colourRows.Count; j++)
+                for (int j = 0; j < colourRows[i].Count; j++)
                 {
                     pbxBitmapBuilder.SetPixel(j, i, colourRows[i][j]);
                 }
@@ -117,6 +133,37 @@ namespace Fractal_Viewer
             ratio += 0.5f;
             scale *= ratio;
 
+            loadFractal();
+        }
+
+        private void Form1_ResizeEnd(object sender, EventArgs e)
+        {
+            fractalPbx.Size = new Size(this.Width - 210, this.Height - 80);
+            loadFractal();
+        }
+
+        private void resetToOriginBtn_Click(object sender, EventArgs e)
+        {
+            centreX = 0;
+            centreY = 0;
+            loadFractal();
+        }
+
+        private void resetScaleLbl_Click(object sender, EventArgs e)
+        {
+            scale = 175;
+            loadFractal();
+        }
+
+        private void maxIterSldr_ValueChanged(object sender, EventArgs e)
+        {
+            iterationMaximum = maxIterSldr.Value;
+            loadFractal();
+        }
+
+        private void magThresholdSldr_ValueChanged(object sender, EventArgs e)
+        {
+            magnitudeThresholdSquared = magThresholdSldr.Value * magThresholdSldr.Value;
             loadFractal();
         }
 
