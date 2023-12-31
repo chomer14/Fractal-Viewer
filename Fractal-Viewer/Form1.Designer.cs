@@ -35,22 +35,22 @@
             this.label1 = new System.Windows.Forms.Label();
             this.scaleLbl = new System.Windows.Forms.Label();
             this.commandPnl = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.renderTimeLbl = new System.Windows.Forms.Label();
-            this.resetScaleLbl = new System.Windows.Forms.Button();
-            this.maxIterSldr = new System.Windows.Forms.TrackBar();
-            this.label4 = new System.Windows.Forms.Label();
-            this.maxItersLbl = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.colourShiftSldr = new System.Windows.Forms.TrackBar();
             this.magThresholdLbl = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.magThresholdSldr = new System.Windows.Forms.TrackBar();
-            this.colourShiftSldr = new System.Windows.Forms.TrackBar();
-            this.label5 = new System.Windows.Forms.Label();
+            this.maxItersLbl = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.maxIterSldr = new System.Windows.Forms.TrackBar();
+            this.resetScaleLbl = new System.Windows.Forms.Button();
+            this.renderTimeLbl = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.fractalPbx)).BeginInit();
             this.commandPnl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.maxIterSldr)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.magThresholdSldr)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colourShiftSldr)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.magThresholdSldr)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.maxIterSldr)).BeginInit();
             this.SuspendLayout();
             // 
             // fractalPbx
@@ -67,7 +67,7 @@
             this.resetToOriginBtn.Name = "resetToOriginBtn";
             this.resetToOriginBtn.Size = new System.Drawing.Size(120, 23);
             this.resetToOriginBtn.TabIndex = 1;
-            this.resetToOriginBtn.Text = "Reset to (0,0)";
+            this.resetToOriginBtn.Text = "Reset to (0 + 0i)";
             this.resetToOriginBtn.UseVisualStyleBackColor = true;
             this.resetToOriginBtn.Click += new System.EventHandler(this.resetToOriginBtn_Click);
             // 
@@ -131,62 +131,24 @@
             this.commandPnl.Size = new System.Drawing.Size(130, 500);
             this.commandPnl.TabIndex = 6;
             // 
-            // label3
+            // label5
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 310);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Render time:";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 348);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(64, 13);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "Colour Shift:";
             // 
-            // renderTimeLbl
+            // colourShiftSldr
             // 
-            this.renderTimeLbl.AutoSize = true;
-            this.renderTimeLbl.Location = new System.Drawing.Point(3, 323);
-            this.renderTimeLbl.Name = "renderTimeLbl";
-            this.renderTimeLbl.Size = new System.Drawing.Size(38, 13);
-            this.renderTimeLbl.TabIndex = 7;
-            this.renderTimeLbl.Text = "372ms";
-            // 
-            // resetScaleLbl
-            // 
-            this.resetScaleLbl.Location = new System.Drawing.Point(3, 101);
-            this.resetScaleLbl.Name = "resetScaleLbl";
-            this.resetScaleLbl.Size = new System.Drawing.Size(120, 23);
-            this.resetScaleLbl.TabIndex = 8;
-            this.resetScaleLbl.Text = "Reset Scale";
-            this.resetScaleLbl.UseVisualStyleBackColor = true;
-            this.resetScaleLbl.Click += new System.EventHandler(this.resetScaleLbl_Click);
-            // 
-            // maxIterSldr
-            // 
-            this.maxIterSldr.Location = new System.Drawing.Point(3, 146);
-            this.maxIterSldr.Maximum = 500;
-            this.maxIterSldr.Minimum = 1;
-            this.maxIterSldr.Name = "maxIterSldr";
-            this.maxIterSldr.Size = new System.Drawing.Size(104, 45);
-            this.maxIterSldr.TabIndex = 9;
-            this.maxIterSldr.Value = 200;
-            this.maxIterSldr.ValueChanged += new System.EventHandler(this.maxIterSldr_ValueChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 178);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 13);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Maximum Iterations:";
-            // 
-            // maxItersLbl
-            // 
-            this.maxItersLbl.AutoSize = true;
-            this.maxItersLbl.Location = new System.Drawing.Point(3, 194);
-            this.maxItersLbl.Name = "maxItersLbl";
-            this.maxItersLbl.Size = new System.Drawing.Size(25, 13);
-            this.maxItersLbl.TabIndex = 12;
-            this.maxItersLbl.Text = "200";
+            this.colourShiftSldr.LargeChange = 3;
+            this.colourShiftSldr.Location = new System.Drawing.Point(3, 364);
+            this.colourShiftSldr.Maximum = 12;
+            this.colourShiftSldr.Name = "colourShiftSldr";
+            this.colourShiftSldr.Size = new System.Drawing.Size(104, 45);
+            this.colourShiftSldr.TabIndex = 16;
+            this.colourShiftSldr.ValueChanged += new System.EventHandler(this.colourShiftSldr_ValueChanged);
             // 
             // magThresholdLbl
             // 
@@ -216,24 +178,62 @@
             this.magThresholdSldr.Value = 2;
             this.magThresholdSldr.ValueChanged += new System.EventHandler(this.magThresholdSldr_ValueChanged);
             // 
-            // colourShiftSldr
+            // maxItersLbl
             // 
-            this.colourShiftSldr.LargeChange = 3;
-            this.colourShiftSldr.Location = new System.Drawing.Point(3, 364);
-            this.colourShiftSldr.Maximum = 12;
-            this.colourShiftSldr.Name = "colourShiftSldr";
-            this.colourShiftSldr.Size = new System.Drawing.Size(104, 45);
-            this.colourShiftSldr.TabIndex = 16;
-            this.colourShiftSldr.ValueChanged += new System.EventHandler(this.colourShiftSldr_ValueChanged);
+            this.maxItersLbl.AutoSize = true;
+            this.maxItersLbl.Location = new System.Drawing.Point(3, 194);
+            this.maxItersLbl.Name = "maxItersLbl";
+            this.maxItersLbl.Size = new System.Drawing.Size(25, 13);
+            this.maxItersLbl.TabIndex = 12;
+            this.maxItersLbl.Text = "200";
             // 
-            // label5
+            // label4
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 348);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 13);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "Colour Shift:";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 178);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(100, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Maximum Iterations:";
+            // 
+            // maxIterSldr
+            // 
+            this.maxIterSldr.Location = new System.Drawing.Point(3, 146);
+            this.maxIterSldr.Maximum = 500;
+            this.maxIterSldr.Minimum = 1;
+            this.maxIterSldr.Name = "maxIterSldr";
+            this.maxIterSldr.Size = new System.Drawing.Size(104, 45);
+            this.maxIterSldr.TabIndex = 9;
+            this.maxIterSldr.Value = 200;
+            this.maxIterSldr.ValueChanged += new System.EventHandler(this.maxIterSldr_ValueChanged);
+            // 
+            // resetScaleLbl
+            // 
+            this.resetScaleLbl.Location = new System.Drawing.Point(3, 101);
+            this.resetScaleLbl.Name = "resetScaleLbl";
+            this.resetScaleLbl.Size = new System.Drawing.Size(120, 23);
+            this.resetScaleLbl.TabIndex = 8;
+            this.resetScaleLbl.Text = "Reset Scale";
+            this.resetScaleLbl.UseVisualStyleBackColor = true;
+            this.resetScaleLbl.Click += new System.EventHandler(this.resetScaleLbl_Click);
+            // 
+            // renderTimeLbl
+            // 
+            this.renderTimeLbl.AutoSize = true;
+            this.renderTimeLbl.Location = new System.Drawing.Point(3, 323);
+            this.renderTimeLbl.Name = "renderTimeLbl";
+            this.renderTimeLbl.Size = new System.Drawing.Size(38, 13);
+            this.renderTimeLbl.TabIndex = 7;
+            this.renderTimeLbl.Text = "372ms";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 310);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Render time:";
             // 
             // Form1
             // 
@@ -248,9 +248,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.fractalPbx)).EndInit();
             this.commandPnl.ResumeLayout(false);
             this.commandPnl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.maxIterSldr)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.magThresholdSldr)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colourShiftSldr)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.magThresholdSldr)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.maxIterSldr)).EndInit();
             this.ResumeLayout(false);
 
         }
