@@ -52,6 +52,17 @@
             this.maxIterSldr = new System.Windows.Forms.TrackBar();
             this.label4 = new System.Windows.Forms.Label();
             this.maxItersLbl = new System.Windows.Forms.Label();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.loadFractalBtn = new System.Windows.Forms.Button();
+            this.saveFractalBtn = new System.Windows.Forms.Button();
+            this.mandelbrotResetBtn = new System.Windows.Forms.Button();
+            this.reloadFractalBtn = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.imEqTbx = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.reEqTbx = new System.Windows.Forms.TextBox();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.fractalPbx)).BeginInit();
             this.commandPnl.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -63,11 +74,12 @@
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maxIterSldr)).BeginInit();
+            this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // fractalPbx
             // 
-            this.fractalPbx.Location = new System.Drawing.Point(170, 20);
+            this.fractalPbx.Location = new System.Drawing.Point(362, 20);
             this.fractalPbx.Name = "fractalPbx";
             this.fractalPbx.Size = new System.Drawing.Size(500, 500);
             this.fractalPbx.TabIndex = 0;
@@ -295,11 +307,106 @@
             this.maxItersLbl.TabIndex = 12;
             this.maxItersLbl.Text = "200";
             // 
+            // panel7
+            // 
+            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel7.Controls.Add(this.loadFractalBtn);
+            this.panel7.Controls.Add(this.saveFractalBtn);
+            this.panel7.Controls.Add(this.mandelbrotResetBtn);
+            this.panel7.Controls.Add(this.reloadFractalBtn);
+            this.panel7.Controls.Add(this.label8);
+            this.panel7.Controls.Add(this.imEqTbx);
+            this.panel7.Controls.Add(this.label7);
+            this.panel7.Controls.Add(this.reEqTbx);
+            this.panel7.Location = new System.Drawing.Point(156, 20);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(200, 200);
+            this.panel7.TabIndex = 22;
+            // 
+            // loadFractalBtn
+            // 
+            this.loadFractalBtn.Location = new System.Drawing.Point(20, 157);
+            this.loadFractalBtn.Name = "loadFractalBtn";
+            this.loadFractalBtn.Size = new System.Drawing.Size(75, 23);
+            this.loadFractalBtn.TabIndex = 31;
+            this.loadFractalBtn.Text = "Load Fractal";
+            this.loadFractalBtn.UseVisualStyleBackColor = true;
+            this.loadFractalBtn.Click += new System.EventHandler(this.loadFractalBtn_Click);
+            // 
+            // saveFractalBtn
+            // 
+            this.saveFractalBtn.Location = new System.Drawing.Point(20, 134);
+            this.saveFractalBtn.Name = "saveFractalBtn";
+            this.saveFractalBtn.Size = new System.Drawing.Size(75, 23);
+            this.saveFractalBtn.TabIndex = 30;
+            this.saveFractalBtn.Text = "Save Fractal";
+            this.saveFractalBtn.UseVisualStyleBackColor = true;
+            this.saveFractalBtn.Click += new System.EventHandler(this.saveFractalBtn_Click);
+            // 
+            // mandelbrotResetBtn
+            // 
+            this.mandelbrotResetBtn.Location = new System.Drawing.Point(20, 111);
+            this.mandelbrotResetBtn.Name = "mandelbrotResetBtn";
+            this.mandelbrotResetBtn.Size = new System.Drawing.Size(75, 23);
+            this.mandelbrotResetBtn.TabIndex = 29;
+            this.mandelbrotResetBtn.Text = "Reset To Mandelbrot";
+            this.mandelbrotResetBtn.UseVisualStyleBackColor = true;
+            this.mandelbrotResetBtn.Click += new System.EventHandler(this.mandelbrotResetBtn_Click);
+            // 
+            // reloadFractalBtn
+            // 
+            this.reloadFractalBtn.Location = new System.Drawing.Point(101, 111);
+            this.reloadFractalBtn.Name = "reloadFractalBtn";
+            this.reloadFractalBtn.Size = new System.Drawing.Size(75, 69);
+            this.reloadFractalBtn.TabIndex = 28;
+            this.reloadFractalBtn.Text = "Reload";
+            this.reloadFractalBtn.UseVisualStyleBackColor = true;
+            this.reloadFractalBtn.Click += new System.EventHandler(this.reloadFractalBtn_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(3, 59);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(100, 13);
+            this.label8.TabIndex = 27;
+            this.label8.Text = "Imaginary Equation:";
+            // 
+            // imEqTbx
+            // 
+            this.imEqTbx.Location = new System.Drawing.Point(3, 75);
+            this.imEqTbx.Name = "imEqTbx";
+            this.imEqTbx.Size = new System.Drawing.Size(192, 20);
+            this.imEqTbx.TabIndex = 26;
+            this.imEqTbx.Text = "2 * zRe * zIm + cIm";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(3, 3);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(77, 13);
+            this.label7.TabIndex = 25;
+            this.label7.Text = "Real Equation:";
+            // 
+            // reEqTbx
+            // 
+            this.reEqTbx.Location = new System.Drawing.Point(3, 19);
+            this.reEqTbx.Name = "reEqTbx";
+            this.reEqTbx.Size = new System.Drawing.Size(192, 20);
+            this.reEqTbx.TabIndex = 23;
+            this.reEqTbx.Text = "zRe * zRe - zIm * zIm + cRe";
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(694, 541);
+            this.ClientSize = new System.Drawing.Size(884, 541);
+            this.Controls.Add(this.panel7);
             this.Controls.Add(this.commandPnl);
             this.Controls.Add(this.fractalPbx);
             this.Name = "Form1";
@@ -322,6 +429,8 @@
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maxIterSldr)).EndInit();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -352,6 +461,17 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox imEqTbx;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox reEqTbx;
+        private System.Windows.Forms.Button reloadFractalBtn;
+        private System.Windows.Forms.Button mandelbrotResetBtn;
+        private System.Windows.Forms.Button saveFractalBtn;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Button loadFractalBtn;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

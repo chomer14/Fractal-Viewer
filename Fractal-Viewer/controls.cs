@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Fractal_Viewer
@@ -37,7 +36,7 @@ namespace Fractal_Viewer
         private void Form1_ResizeEnd(object sender, EventArgs e)
         {
             // scale picturebox to almost fill form
-            fractalPbx.Size = new Size(this.Width - 210, this.Height - 80);
+            fractalPbx.Size = new Size(this.Width - 400, this.Height - 80);
             loadFractal();
         }
 
@@ -132,6 +131,43 @@ namespace Fractal_Viewer
 
             // base behavior
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void reloadFractalBtn_Click(object sender, EventArgs e)
+        {
+            loadFractal();
+        }
+
+        private void mandelbrotResetBtn_Click(object sender, EventArgs e)
+        {
+            imEqTbx.Text = "2 * zRe * zIm + cIm";
+            reEqTbx.Text = "zRe * zRe - zIm * zIm + cRe";
+            loadFractal();
+        }
+
+        private void saveFractalBtn_Click(object sender, EventArgs e)
+        {
+            List<string> equations = new List<string> { imEqTbx.Text, reEqTbx.Text };
+            saveFileDialog1.Title = "Select Where To Save Fractal File";
+            saveFileDialog1.DefaultExt = "fra";
+            saveFileDialog1.Filter = "fra files (*.fra)|*.fra|All files (*.*)|*.*";
+            saveFileDialog1.ShowDialog();
+
+            File.WriteAllLines(saveFileDialog1.FileName, equations);
+        }
+
+        private void loadFractalBtn_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Title = "Select Where Fractal File To Load";
+            openFileDialog1.DefaultExt = "fra";
+            openFileDialog1.Filter = "fra files (*.fra)|*.fra|All files (*.*)|*.*";
+            openFileDialog1.ShowDialog();
+
+            List<string> equations = File.ReadAllLines(openFileDialog1.FileName).ToList();
+            imEqTbx.Text = equations[0];
+            reEqTbx.Text = equations[1];
+
+            loadFractal();
         }
     }
 }

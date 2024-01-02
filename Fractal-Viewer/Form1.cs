@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Diagnostics;
@@ -31,6 +30,9 @@ namespace Fractal_Viewer
 
         public void loadFractal()
         {
+            realEquation = reEqTbx.Text;
+            imaginaryEquation = imEqTbx.Text;
+
             Func<float, float, float, float, float> realFunction;
             Func<float, float, float, float, float> imaginaryFunction;
 
