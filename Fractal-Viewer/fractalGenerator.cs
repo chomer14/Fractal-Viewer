@@ -8,7 +8,7 @@ namespace Fractal_Viewer
     public static class fractalGenerator
     {
 
-        static public Bitmap generateFractal(PictureBox fractalPbx, float scale, float centreX, float centreY, int iterationMaximum, int magnitudeThresholdSquared, float colourShift)
+        static public Bitmap generateFractal(PictureBox fractalPbx, float scale, float centreX, float centreY, int iterationMaximum, int magnitudeThresholdSquared, float colourShift, Func<float, float, float, float, float> reFunc, Func<float, float, float, float, float> imFunc)
         {
             // rows of colours generated
             List<List<Color>> colourRows = new List<List<Color>>();
@@ -16,7 +16,7 @@ namespace Fractal_Viewer
             for (int y = 0; y < fractalPbx.Height; y++)
             {
                 // generate the row of colours per y value, and add it to the list
-                colourRows.Add(generateFractalRow(y, fractalPbx, scale, centreX, centreY, iterationMaximum, magnitudeThresholdSquared, colourShift));
+                colourRows.Add(generateFractalRow(y, fractalPbx, scale, centreX, centreY, iterationMaximum, magnitudeThresholdSquared, colourShift, reFunc, imFunc));
             }
 
             Bitmap pbxBitmapBuilder = new Bitmap(fractalPbx.Width, fractalPbx.Height);
@@ -33,7 +33,7 @@ namespace Fractal_Viewer
             return pbxBitmapBuilder;
         }
 
-        static public List<Color> generateFractalRow(int y, PictureBox fractalPbx, float scale, float centreX, float centreY, int iterationMaximum, int magnitudeThresholdSquared, float colourShift)
+        static public List<Color> generateFractalRow(int y, PictureBox fractalPbx, float scale, float centreX, float centreY, int iterationMaximum, int magnitudeThresholdSquared, float colourShift, Func<float, float, float, float, float> reFunc, Func<float, float, float, float, float> imFunc)
         {
             // list that is filled out per pixel
             List<Color> colourList = new List<Color>();
@@ -77,8 +77,10 @@ namespace Fractal_Viewer
                     // square z and add c
                     // (a+bi)^2 = a^2 + 2abi - b^2 = (a^2-b^2) + (2ab)i
                     float tZIm = zIm;
-                    zIm = 2 * zRe * zIm + cIm;
-                    zRe = zRe * zRe - tZIm * tZIm + cRe;
+                    //zIm = 2 * zRe * zIm + cIm;
+                    //zRe = zRe * zRe - tZIm * tZIm + cRe;
+                    zIm = imFunc(cRe, cIm, zRe, zIm);
+                    zRe = reFunc(cRe, cIm, zRe, tZIm);
                 }
 
                 // if b is still true, the value never diverged, so is considered convergant

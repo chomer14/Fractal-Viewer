@@ -16,6 +16,10 @@ namespace Fractal_Viewer
 
         float colourShift = 0;
 
+
+        string realEquation = "zRe * zRe - zIm * zIm + cRe";
+        string imaginaryEquation = "2 * zRe * zIm + cIm";
+
         public Form1()
         {
             // necessary for scroll event to work regardless of focus
@@ -27,6 +31,12 @@ namespace Fractal_Viewer
 
         public void loadFractal()
         {
+            Func<float, float, float, float, float> realFunction;
+            Func<float, float, float, float, float> imaginaryFunction;
+
+            realFunction = expressionEvaluator.GetUserDefinedFunction(realEquation);
+            imaginaryFunction = expressionEvaluator.GetUserDefinedFunction(imaginaryEquation);
+
             // Update labels showing focus and scale
             centralFocusLbl.Text = $"({Math.Round(centreX, 3)}) + ({Math.Round(centreY, 3)})i";
             scaleLbl.Text = $"{scale.ToString("E3")}";
@@ -36,7 +46,7 @@ namespace Fractal_Viewer
             s.Start();
 
             // generate fractal
-            Bitmap b = fractalGenerator.generateFractal(fractalPbx, scale, centreX, centreY, iterationMaximum, magnitudeThresholdSquared, colourShift);
+            Bitmap b = fractalGenerator.generateFractal(fractalPbx, scale, centreX, centreY, iterationMaximum, magnitudeThresholdSquared, colourShift, realFunction, imaginaryFunction);
             
             // display generation duration
             s.Stop();
