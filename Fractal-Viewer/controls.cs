@@ -142,12 +142,14 @@ namespace Fractal_Viewer
         {
             imEqTbx.Text = "2 * zRe * zIm + cIm";
             reEqTbx.Text = "zRe * zRe - zIm * zIm + cRe";
+            imConsTbx.Text = "0";
+            reConsTbx.Text = "0";
             loadFractal();
         }
 
         private void saveFractalBtn_Click(object sender, EventArgs e)
         {
-            List<string> equations = new List<string> { imEqTbx.Text, reEqTbx.Text };
+            List<string> equations = new List<string> { imEqTbx.Text, reEqTbx.Text, imConsTbx.Text, reConsTbx.Text };
             saveFileDialog1.Title = "Select Where To Save Fractal File";
             saveFileDialog1.DefaultExt = "fra";
             saveFileDialog1.Filter = "fra files (*.fra)|*.fra|All files (*.*)|*.*";
@@ -166,6 +168,8 @@ namespace Fractal_Viewer
             List<string> equations = File.ReadAllLines(openFileDialog1.FileName).ToList();
             imEqTbx.Text = equations[0];
             reEqTbx.Text = equations[1];
+            imConsTbx.Text = equations[2];
+            reConsTbx.Text = equations[3];
 
             loadFractal();
         }

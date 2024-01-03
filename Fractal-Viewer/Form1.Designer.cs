@@ -53,6 +53,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.maxItersLbl = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.imConsTbx = new System.Windows.Forms.TextBox();
+            this.reConsTbx = new System.Windows.Forms.TextBox();
             this.loadFractalBtn = new System.Windows.Forms.Button();
             this.saveFractalBtn = new System.Windows.Forms.Button();
             this.mandelbrotResetBtn = new System.Windows.Forms.Button();
@@ -310,6 +314,10 @@
             // panel7
             // 
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel7.Controls.Add(this.label10);
+            this.panel7.Controls.Add(this.label9);
+            this.panel7.Controls.Add(this.imConsTbx);
+            this.panel7.Controls.Add(this.reConsTbx);
             this.panel7.Controls.Add(this.loadFractalBtn);
             this.panel7.Controls.Add(this.saveFractalBtn);
             this.panel7.Controls.Add(this.mandelbrotResetBtn);
@@ -320,12 +328,46 @@
             this.panel7.Controls.Add(this.reEqTbx);
             this.panel7.Location = new System.Drawing.Point(156, 20);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(200, 200);
+            this.panel7.Size = new System.Drawing.Size(200, 245);
             this.panel7.TabIndex = 22;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(97, 110);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(97, 13);
+            this.label10.TabIndex = 34;
+            this.label10.Text = "Imaginary Constant";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(3, 110);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(74, 13);
+            this.label9.TabIndex = 33;
+            this.label9.Text = "Real Constant";
+            // 
+            // imConsTbx
+            // 
+            this.imConsTbx.Location = new System.Drawing.Point(100, 126);
+            this.imConsTbx.Name = "imConsTbx";
+            this.imConsTbx.Size = new System.Drawing.Size(95, 20);
+            this.imConsTbx.TabIndex = 32;
+            this.imConsTbx.Text = "0";
+            // 
+            // reConsTbx
+            // 
+            this.reConsTbx.Location = new System.Drawing.Point(3, 126);
+            this.reConsTbx.Name = "reConsTbx";
+            this.reConsTbx.Size = new System.Drawing.Size(95, 20);
+            this.reConsTbx.TabIndex = 23;
+            this.reConsTbx.Text = "0";
             // 
             // loadFractalBtn
             // 
-            this.loadFractalBtn.Location = new System.Drawing.Point(20, 157);
+            this.loadFractalBtn.Location = new System.Drawing.Point(23, 207);
             this.loadFractalBtn.Name = "loadFractalBtn";
             this.loadFractalBtn.Size = new System.Drawing.Size(75, 23);
             this.loadFractalBtn.TabIndex = 31;
@@ -335,7 +377,7 @@
             // 
             // saveFractalBtn
             // 
-            this.saveFractalBtn.Location = new System.Drawing.Point(20, 134);
+            this.saveFractalBtn.Location = new System.Drawing.Point(23, 184);
             this.saveFractalBtn.Name = "saveFractalBtn";
             this.saveFractalBtn.Size = new System.Drawing.Size(75, 23);
             this.saveFractalBtn.TabIndex = 30;
@@ -345,7 +387,7 @@
             // 
             // mandelbrotResetBtn
             // 
-            this.mandelbrotResetBtn.Location = new System.Drawing.Point(20, 111);
+            this.mandelbrotResetBtn.Location = new System.Drawing.Point(23, 161);
             this.mandelbrotResetBtn.Name = "mandelbrotResetBtn";
             this.mandelbrotResetBtn.Size = new System.Drawing.Size(75, 23);
             this.mandelbrotResetBtn.TabIndex = 29;
@@ -355,7 +397,7 @@
             // 
             // reloadFractalBtn
             // 
-            this.reloadFractalBtn.Location = new System.Drawing.Point(101, 111);
+            this.reloadFractalBtn.Location = new System.Drawing.Point(100, 161);
             this.reloadFractalBtn.Name = "reloadFractalBtn";
             this.reloadFractalBtn.Size = new System.Drawing.Size(75, 69);
             this.reloadFractalBtn.TabIndex = 28;
@@ -472,6 +514,10 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button loadFractalBtn;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox imConsTbx;
+        private System.Windows.Forms.TextBox reConsTbx;
     }
 }
 

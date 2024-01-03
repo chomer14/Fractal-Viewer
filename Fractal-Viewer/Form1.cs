@@ -22,10 +22,20 @@ namespace Fractal_Viewer
         public Form1()
         {
             // necessary for scroll event to work regardless of focus
-            this.MouseWheel += Form1_Scroll;
             InitializeComponent();
 
+            this.MouseWheel += Form1_Scroll;
+            this.fractalPbx.MouseDown += fractalPbx_MouseDown;
+
             loadFractal();
+        }
+
+        private void fractalPbx_MouseDown(object sender, MouseEventArgs e)
+        {
+            int X = e.X;
+            int Y = e.Y;
+            (float a, float b) x = pixelToComplex(e.X, e.Y);
+            MessageBox.Show($"({x.a})+({x.b})i");
         }
 
         public void loadFractal()
@@ -43,12 +53,15 @@ namespace Fractal_Viewer
             centralFocusLbl.Text = $"({Math.Round(centreX, 3)}) + ({Math.Round(centreY, 3)})i";
             scaleLbl.Text = $"{scale.ToString("E3")}";
 
+            float realConst = float.Parse(reConsTbx.Text.Trim() == "" ? "0" : reConsTbx.Text.Trim());
+            float imagConst = float.Parse(imConsTbx.Text.Trim() == "" ? "0" : imConsTbx.Text.Trim());
+
             // time to generate
             Stopwatch s = new Stopwatch();
             s.Start();
 
             // generate fractal
-            Bitmap b = fractalGenerator.generateFractal(fractalPbx, scale, centreX, centreY, iterationMaximum, magnitudeThresholdSquared, colourShift, realFunction, imaginaryFunction);
+            Bitmap b = fractalGenerator.generateFractal(fractalPbx, scale, centreX, centreY, iterationMaximum, magnitudeThresholdSquared, colourShift, realFunction, imaginaryFunction, realConst, imagConst);
             
             // display generation duration
             s.Stop();
