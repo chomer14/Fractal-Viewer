@@ -454,6 +454,7 @@
             this.Name = "Form1";
             this.Text = "Fractal Viewer";
             this.ResizeEnd += new System.EventHandler(this.Form1_ResizeEnd);
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.Form1_HelpRequested);
             ((System.ComponentModel.ISupportInitialize)(this.fractalPbx)).EndInit();
             this.commandPnl.ResumeLayout(false);
             this.panel5.ResumeLayout(false);

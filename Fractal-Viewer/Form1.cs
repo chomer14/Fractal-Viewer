@@ -2,6 +2,9 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.IO;
+using System.Reflection;
+using System.Linq;
 
 namespace Fractal_Viewer
 {
@@ -36,6 +39,24 @@ namespace Fractal_Viewer
             int Y = e.Y;
             (float a, float b) x = pixelToComplex(e.X, e.Y);
             MessageBox.Show($"({x.a})+({x.b})i");
+        }
+
+        private void Form1_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            string resourceName = assembly.GetManifestResourceNames()
+                .Single(str => str.EndsWith("help.html"));
+            string result;
+
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                result = reader.ReadToEnd();
+            }
+
+            File.WriteAllText("help.html", result);
+
+            Process.Start("help.html");
         }
 
         public void loadFractal()
