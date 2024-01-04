@@ -4,28 +4,27 @@ using System.Drawing;
 using System.Linq;
 using System.IO;
 using System.Windows.Forms;
-using System.Diagnostics;
 using System.Reflection;
-using System.Runtime.Versioning;
-using System.Runtime.CompilerServices;
 
 namespace Fractal_Viewer
 {
     public partial class Form1 : Form
     {
-
         private void Form1_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
+            // f1 key has been pressed, so get detailed info about the focused control
             OpenHelpFile(this.ActiveControl.Name, this);
         }
 
         private void helpBtn_Click(object sender, EventArgs e)
         {
+            // the help button has been clicked, so show the start of the file
             OpenHelpFile("", this);
         }
 
         static void OpenHelpFile(string anchor, Form myForm)
         {
+            // gets the help.html resource, and read it into 'result'
             var assembly = Assembly.GetExecutingAssembly();
             string resourceName = assembly.GetManifestResourceNames()
                 .Single(str => str.EndsWith("help.html"));
@@ -37,28 +36,29 @@ namespace Fractal_Viewer
                 result = reader.ReadToEnd();
             }
 
-            File.WriteAllText("help.html", result);
-            string myDir = System.IO.Directory.GetCurrentDirectory().Replace("\\", "/");
+            // write the html file locally
+            string myDir = Directory.GetCurrentDirectory().Replace("\\", "/");
+            File.WriteAllText($"{myDir}/help.html", result);
 
-            Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-
+            // create a new form and webbrowser for the help file to be held in
             Form form = new Form();
             form.Width = myForm.Width;
             form.Height = myForm.Height;
+            form.Text = "Help";
             WebBrowser webBrowser = new WebBrowser();
 
             form.Controls.Add(webBrowser);
-
             webBrowser.Dock = DockStyle.Fill;
 
+            // open my help file and when it the page is loaded goto the heading with the same id as the focused control
+            // if anchor is blank (button was pressed), it stays at top of file
             webBrowser.Navigate($"file://{myDir}/help.html");
-            
             webBrowser.DocumentCompleted += (sender, e) =>
             {
                 webBrowser.Document.GetElementById(anchor)?.ScrollIntoView(true);
             };
 
+            // show form
             form.ShowDialog();
         }
 
@@ -146,6 +146,8 @@ namespace Fractal_Viewer
         {
             int size;
             float relativeSize;
+
+            // saves having "changed=true" in each case
             bool changed = true;
 
             // dependant on key, move the centre. If centre moved, reload fractal
@@ -202,12 +204,14 @@ namespace Fractal_Viewer
 
         private void saveFractalBtn_Click(object sender, EventArgs e)
         {
+            // creates string list with the 4 elements that make up the definition of the fractal
             List<string> equations = new List<string> { imEqTbx.Text, reEqTbx.Text, imConsTbx.Text, reConsTbx.Text };
             saveFileDialog1.Title = "Select Where To Save Fractal File";
             saveFileDialog1.DefaultExt = "fra";
             saveFileDialog1.Filter = "fra files (*.fra)|*.fra|All files (*.*)|*.*";
             saveFileDialog1.ShowDialog();
 
+            // save file
             File.WriteAllLines(saveFileDialog1.FileName, equations);
         }
 
@@ -218,6 +222,7 @@ namespace Fractal_Viewer
             openFileDialog1.Filter = "fra files (*.fra)|*.fra|All files (*.*)|*.*";
             openFileDialog1.ShowDialog();
 
+            // gets string list with the 4 elements that make up the definition of the fractal and write them to the form
             List<string> equations = File.ReadAllLines(openFileDialog1.FileName).ToList();
             imEqTbx.Text = equations[0];
             reEqTbx.Text = equations[1];

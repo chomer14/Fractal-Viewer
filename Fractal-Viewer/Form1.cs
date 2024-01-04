@@ -2,9 +2,6 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.Diagnostics;
-using System.IO;
-using System.Reflection;
-using System.Linq;
 
 namespace Fractal_Viewer
 {
@@ -24,7 +21,6 @@ namespace Fractal_Viewer
 
         public Form1()
         {
-            // necessary for scroll event to work regardless of focus
             InitializeComponent();
 
             this.MouseWheel += Form1_Scroll;
@@ -35,8 +31,7 @@ namespace Fractal_Viewer
 
         private void fractalPbx_MouseDown(object sender, MouseEventArgs e)
         {
-            int X = e.X;
-            int Y = e.Y;
+            // gets mouse x and y and converts it to the corresponding complex number
             (float a, float b) x = pixelToComplex(e.X, e.Y);
             MessageBox.Show($"({x.a})+({x.b})i");
         }
@@ -46,9 +41,9 @@ namespace Fractal_Viewer
             realEquation = reEqTbx.Text;
             imaginaryEquation = imEqTbx.Text;
 
+            // seperated type decleration so you can actually see it without wordwrap on
             Func<float, float, float, float, float> realFunction;
             Func<float, float, float, float, float> imaginaryFunction;
-
             realFunction = expressionEvaluator.GetUserDefinedFunction(realEquation);
             imaginaryFunction = expressionEvaluator.GetUserDefinedFunction(imaginaryEquation);
 
@@ -56,6 +51,7 @@ namespace Fractal_Viewer
             centralFocusLbl.Text = $"({Math.Round(centreX, 3)}) + ({Math.Round(centreY, 3)})i";
             scaleLbl.Text = $"{scale.ToString("E3")}";
 
+            // if constant fields are blank, consider them 0
             float realConst = float.Parse(reConsTbx.Text.Trim() == "" ? "0" : reConsTbx.Text.Trim());
             float imagConst = float.Parse(imConsTbx.Text.Trim() == "" ? "0" : imConsTbx.Text.Trim());
 

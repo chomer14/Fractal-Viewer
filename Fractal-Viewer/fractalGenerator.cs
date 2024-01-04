@@ -74,11 +74,10 @@ namespace Fractal_Viewer
                         break;
                     }
 
-                    // square z and add c
-                    // (a+bi)^2 = a^2 + 2abi - b^2 = (a^2-b^2) + (2ab)i
+                    // needed as when calculating cRe, cIm has already changed.
                     float tZIm = zIm;
-                    //zIm = 2 * zRe * zIm + cIm;
-                    //zRe = zRe * zRe - tZIm * tZIm + cRe;
+
+                    // use user defined functions to iterate
                     zIm = imFunc(cRe, cIm, zRe, zIm) + iConst;
                     zRe = reFunc(cRe, cIm, zRe, tZIm) + rConst;
                 }
