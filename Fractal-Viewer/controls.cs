@@ -4,11 +4,64 @@ using System.Drawing;
 using System.Linq;
 using System.IO;
 using System.Windows.Forms;
+using System.Diagnostics;
+using System.Reflection;
+using System.Runtime.Versioning;
+using System.Runtime.CompilerServices;
 
 namespace Fractal_Viewer
 {
     public partial class Form1 : Form
     {
+
+        private void Form1_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+            OpenHelpFile(this.ActiveControl.Name, this);
+        }
+
+        private void helpBtn_Click(object sender, EventArgs e)
+        {
+            OpenHelpFile("", this);
+        }
+
+        static void OpenHelpFile(string anchor, Form myForm)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            string resourceName = assembly.GetManifestResourceNames()
+                .Single(str => str.EndsWith("help.html"));
+            string result;
+
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                result = reader.ReadToEnd();
+            }
+
+            File.WriteAllText("help.html", result);
+            string myDir = System.IO.Directory.GetCurrentDirectory().Replace("\\", "/");
+
+            Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
+
+            Form form = new Form();
+            form.Width = myForm.Width;
+            form.Height = myForm.Height;
+            WebBrowser webBrowser = new WebBrowser();
+
+            form.Controls.Add(webBrowser);
+
+            webBrowser.Dock = DockStyle.Fill;
+
+            webBrowser.Navigate($"file://{myDir}/help.html");
+            
+            webBrowser.DocumentCompleted += (sender, e) =>
+            {
+                webBrowser.Document.GetElementById(anchor)?.ScrollIntoView(true);
+            };
+
+            form.ShowDialog();
+        }
+
         private void Form1_Scroll(object sender, MouseEventArgs e)
         {
             // make sure mouse is within bounds of picturebox

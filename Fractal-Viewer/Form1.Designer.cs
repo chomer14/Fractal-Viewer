@@ -53,6 +53,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.maxItersLbl = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.helpBtn = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.imConsTbx = new System.Windows.Forms.TextBox();
@@ -314,6 +315,7 @@
             // panel7
             // 
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel7.Controls.Add(this.helpBtn);
             this.panel7.Controls.Add(this.label10);
             this.panel7.Controls.Add(this.label9);
             this.panel7.Controls.Add(this.imConsTbx);
@@ -328,8 +330,18 @@
             this.panel7.Controls.Add(this.reEqTbx);
             this.panel7.Location = new System.Drawing.Point(156, 20);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(200, 245);
+            this.panel7.Size = new System.Drawing.Size(200, 279);
             this.panel7.TabIndex = 22;
+            // 
+            // helpBtn
+            // 
+            this.helpBtn.Location = new System.Drawing.Point(23, 233);
+            this.helpBtn.Name = "helpBtn";
+            this.helpBtn.Size = new System.Drawing.Size(152, 23);
+            this.helpBtn.TabIndex = 35;
+            this.helpBtn.Text = "Help";
+            this.helpBtn.UseVisualStyleBackColor = true;
+            this.helpBtn.Click += new System.EventHandler(this.helpBtn_Click);
             // 
             // label10
             // 
@@ -387,11 +399,12 @@
             // 
             // mandelbrotResetBtn
             // 
+            this.mandelbrotResetBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
             this.mandelbrotResetBtn.Location = new System.Drawing.Point(23, 161);
             this.mandelbrotResetBtn.Name = "mandelbrotResetBtn";
             this.mandelbrotResetBtn.Size = new System.Drawing.Size(75, 23);
             this.mandelbrotResetBtn.TabIndex = 29;
-            this.mandelbrotResetBtn.Text = "Reset To Mandelbrot";
+            this.mandelbrotResetBtn.Text = "Reset Mandelbrot";
             this.mandelbrotResetBtn.UseVisualStyleBackColor = true;
             this.mandelbrotResetBtn.Click += new System.EventHandler(this.mandelbrotResetBtn_Click);
             // 
@@ -519,6 +532,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox imConsTbx;
         private System.Windows.Forms.TextBox reConsTbx;
+        private System.Windows.Forms.Button helpBtn;
     }
 }
 
