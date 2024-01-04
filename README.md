@@ -6,6 +6,11 @@ Fractals are fascinating mathematical structures that exhibit self-similarity at
 ### The Power of Exploration
 My Fractal Generator and Visualizer empowers you to explore the depths of fractal artistry. Whether you're a seasoned mathematician or an art enthusiast, this tool provides a dynamic and interactive platform for discovering the mesmerizing beauty hidden within mathematical equations.
 
+|                                     |                                   |
+|-------------------------------------|-----------------------------------|
+| ![Alt text](images/colourShift.png) | ![Alt text](images/crack.png)     |
+| ![Alt text](images/mandlebrot.png)  | ![Alt text](images/colourful.png) |
+
 Help:
 =====
 
