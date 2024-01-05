@@ -142,6 +142,23 @@ namespace Fractal_Viewer
             return (relativeX, relativeY);
         }
 
+        public (float, float) complexToPixel(float relativeX, float relativeY)
+        {
+            // Unaccount for focus
+            relativeX -= centreX;
+            relativeY -= centreY;
+
+            // Unscale
+            relativeX *= scale;
+            relativeY *= scale;
+
+            // Move origin back to top-left corner
+            float originalX = relativeX + fractalPbx.Width / 2;
+            float originalY = relativeY + fractalPbx.Height / 2;
+
+            return (originalX, originalY);
+        }
+
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             int size;
@@ -230,6 +247,54 @@ namespace Fractal_Viewer
             reConsTbx.Text = equations[3];
 
             loadFractal();
+        }
+
+        private void fractalPbx_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                fractalPbx.Invalidate();
+                return;
+            }
+
+            // gets mouse x and y and converts it to the corresponding complex number
+            // below vars have type Func<float, float, float, float, float>
+            var realFunction = expressionEvaluator.GetUserDefinedFunction(reEqTbx.Text);
+            var imaginaryFunction = expressionEvaluator.GetUserDefinedFunction(imEqTbx.Text);
+
+            (float a, float b) complex = pixelToComplex(e.X, e.Y);
+
+            float zRe = complex.a;
+            float zIm = complex.b;
+            float cIm = zIm;
+            float cRe = zRe;
+
+            using (Graphics g = fractalPbx.CreateGraphics())
+            {
+                for (int i = 0; i < iterationMaximum; i++)
+                {
+                    float tZIm = zIm;
+
+                    (float x, float y) startPoint = complexToPixel(zRe, zIm);
+
+                    // use user defined functions to iterate
+                    zIm = imaginaryFunction(cRe, cIm, zRe, zIm) + float.Parse(imConsTbx.Text.Trim() == "" ? "0" : reConsTbx.Text.Trim());
+                    zRe = realFunction(cRe, cIm, zRe, tZIm) + float.Parse(reConsTbx.Text.Trim() == "" ? "0" : reConsTbx.Text.Trim());
+
+
+                    (float x, float y) endPoint = complexToPixel(zRe, zIm);
+
+                    // Create a Pen with desired color and thickness
+
+                    Pen pen = new Pen(Color.White, 2);
+                    g.DrawLine(pen, startPoint.x, startPoint.y, endPoint.x, endPoint.y);
+
+                    if (zRe * zRe + zIm * zIm > magnitudeThresholdSquared)
+                        break;
+                }
+            }
+
+            MessageBox.Show($"({complex.a})+({complex.b})i");
         }
     }
 }
