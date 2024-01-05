@@ -29,11 +29,23 @@ namespace Fractal_Viewer
             loadFractal();
         }
 
+        private void fractalPbx_MouseDown(object sender, MouseEventArgs e)
+        {
+            // gets mouse x and y and converts it to the corresponding complex number
+            (float a, float b) x = pixelToComplex(e.X, e.Y);
+            MessageBox.Show($"({x.a})+({x.b})i");
+        }
+
         public void loadFractal()
         {
-            // below vars have type Func<float, float, float, float, float>
-            var realFunction = expressionEvaluator.GetUserDefinedFunction(reEqTbx.Text);
-            var imaginaryFunction = expressionEvaluator.GetUserDefinedFunction(imEqTbx.Text);
+            realEquation = reEqTbx.Text;
+            imaginaryEquation = imEqTbx.Text;
+
+            // seperated type decleration so you can actually see it without wordwrap on
+            Func<float, float, float, float, float> realFunction;
+            Func<float, float, float, float, float> imaginaryFunction;
+            realFunction = expressionEvaluator.GetUserDefinedFunction(realEquation);
+            imaginaryFunction = expressionEvaluator.GetUserDefinedFunction(imaginaryEquation);
 
             // Update labels showing focus and scale
             centralFocusLbl.Text = $"({Math.Round(centreX, 3)}) + ({Math.Round(centreY, 3)})i";
